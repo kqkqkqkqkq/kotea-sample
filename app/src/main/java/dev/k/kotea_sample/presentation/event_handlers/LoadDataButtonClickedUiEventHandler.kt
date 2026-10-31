@@ -1,0 +1,19 @@
+package dev.k.kotea_sample.presentation.event_handlers
+
+import dev.k.kotea_sample.presentation.MainCommand
+import dev.k.kotea_sample.presentation.MainCommand.LoadData
+import dev.k.kotea_sample.presentation.MainNews
+import dev.k.kotea_sample.presentation.MainState
+import dev.k.kotea_sample.presentation.MainUiEvent.LoadDataButtonClicked
+import ru.tinkoff.kotea.core.Next
+
+internal class LoadDataButtonClickedUiEventHandler : BaseEventHandler<LoadDataButtonClicked>() {
+    override fun update(state: MainState, event: LoadDataButtonClicked): Next<MainState, MainCommand, MainNews> {
+        return Next(
+            state = state.copy(
+                dataText = null,
+            ),
+            commands = listOf(LoadData(false)),
+        )
+    }
+}

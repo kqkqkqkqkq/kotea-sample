@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "dev.k.kotea_sample.app-mergeDebugResources-36:/values-or/values-or.xml",
+            "outputFile": "dev.k.kotea_sample.app-mergeDebugResources-38:/values-or/values-or.xml",
             "map": [
                 {
                     "source": "/Users/k.bilyk/.gradle/caches/9.6.0/transforms/b64e5ccac257d942624d443fc46017e6/transformed/material/res/values-or/values-or.xml",

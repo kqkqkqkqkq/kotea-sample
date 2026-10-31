@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">kotea-sample</string>
+    <string name="app_name">kotea sample</string>
+    <string name="main_title">Kotea preview</string>
+    <string name="main_throw_error">Throw error</string>
+    <string name="main_load_data">Load data</string>
 </resources>

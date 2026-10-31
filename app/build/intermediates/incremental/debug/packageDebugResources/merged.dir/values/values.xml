@@ -7,6 +7,9 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="white">#FFFFFFFF</color>
-    <string name="app_name">kotea-sample</string>
+    <string name="app_name">kotea sample</string>
+    <string name="main_load_data">Load data</string>
+    <string name="main_throw_error">Throw error</string>
+    <string name="main_title">Kotea preview</string>
     <style name="Theme.Koteasample" parent="android:Theme.Material.Light.NoActionBar"/>
 </resources>

@@ -1,47 +1,73 @@
 package dev.k.kotea_sample
 
 import android.os.Bundle
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import dev.k.kotea_sample.ui.theme.KoteasampleTheme
+import dev.k.kotea_sample.core.ui.theme.KoteasampleTheme
+import dev.k.kotea_sample.presentation.MainNews
+import dev.k.kotea_sample.presentation.MainNews.ShowToast
+import dev.k.kotea_sample.presentation.MainStore
+import dev.k.kotea_sample.presentation.MainUiEvent.LoadDataButtonClicked
+import dev.k.kotea_sample.presentation.MainUiEvent.ThrowErrorButtonClicked
+import dev.k.kotea_sample.presentation.command_handlers.LoadDataCommandHandler
+import dev.k.kotea_sample.presentation.event_handlers.DataLoadedErrorEventHandler
+import dev.k.kotea_sample.presentation.event_handlers.DataLoadedSuccessEventHandler
+import dev.k.kotea_sample.presentation.event_handlers.LoadDataButtonClickedUiEventHandler
+import dev.k.kotea_sample.presentation.event_handlers.MainUpdate
+import dev.k.kotea_sample.presentation.event_handlers.ThrowErrorButtonClickedUiEventHandler
+import dev.k.kotea_sample.ui.MainScreen
+import dev.k.kotea_sample.ui.MainUiState
+import dev.k.kotea_sample.ui.MainUiStateMapper
+import ru.tinkoff.kotea.android.lifecycle.collectOnCreate
+import ru.tinkoff.kotea.android.storeViaViewModel
 
 class MainActivity : ComponentActivity() {
+
+    private val mainUiStateMapper = MainUiStateMapper()
+
+    private val store by storeViaViewModel {
+        MainStore(
+            commandsFlowHandlers = listOf(
+                LoadDataCommandHandler(),
+            ),
+            update = MainUpdate(
+                dataLoadedSuccessEventHandler = DataLoadedSuccessEventHandler(),
+                dataLoadedErrorEventHandler = DataLoadedErrorEventHandler(),
+                loadDataButtonClickedUiEventHandler = LoadDataButtonClickedUiEventHandler(),
+                throwErrorButtonClickedUiEventHandler = ThrowErrorButtonClickedUiEventHandler(),
+            )
+        )
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        store.collectOnCreate(
+            activity = this,
+            uiStateMapper = mainUiStateMapper,
+            stateCollector = ::handleUiState,
+            newsCollector = ::handleNews,
+        )
+    }
+
+    private fun handleUiState(state: MainUiState) {
         setContent {
             KoteasampleTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                MainScreen(
+                    state = state,
+                    onLoadDataClick = { store.dispatch(LoadDataButtonClicked) },
+                    onThrowErrorClick = { store.dispatch(ThrowErrorButtonClicked) },
+                )
             }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    KoteasampleTheme {
-        Greeting("Android")
+    private fun handleNews(news: MainNews) {
+        when (news) {
+            is ShowToast -> Toast.makeText(this, news.text, LENGTH_SHORT).show()
+        }
     }
 }
