@@ -1,0 +1,8 @@
+dev.k.kotea_sample.app-pngs-0 /Users/k.bilyk/Developer/android/kotea-sample/app/build/generated/res/pngs/debug
+dev.k.kotea_sample.app-updated_navigation_xml-1 /Users/k.bilyk/Developer/android/kotea-sample/app/build/generated/updated_navigation_xml/debug
+dev.k.kotea_sample.app-packageDebugResources-2 /Users/k.bilyk/Developer/android/kotea-sample/app/build/intermediates/incremental/debug/packageDebugResources/merged.dir
+dev.k.kotea_sample.app-packageDebugResources-3 /Users/k.bilyk/Developer/android/kotea-sample/app/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
+dev.k.kotea_sample.app-debug-4 /Users/k.bilyk/Developer/android/kotea-sample/app/build/intermediates/merged_res/debug/mergeDebugResources
+dev.k.kotea_sample.app-debug-5 /Users/k.bilyk/Developer/android/kotea-sample/app/src/debug/res
+dev.k.kotea_sample.app-main-6 /Users/k.bilyk/Developer/android/kotea-sample/app/src/main/res
+gradleHome-0 /Users/k.bilyk/.gradle
