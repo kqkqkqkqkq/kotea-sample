@@ -48,12 +48,12 @@ class MainActivity : ComponentActivity() {
         store.collectOnCreate(
             activity = this,
             uiStateMapper = mainUiStateMapper,
-            stateCollector = ::handleUiState,
+            stateCollector = ::collectState,
             newsCollector = ::handleNews,
         )
     }
 
-    private fun handleUiState(state: MainUiState) {
+    private fun collectState(state: MainUiState) {
         setContent {
             KoteasampleTheme {
                 MainScreen(

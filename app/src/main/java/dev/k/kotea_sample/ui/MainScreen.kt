@@ -12,7 +12,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -48,6 +47,7 @@ private fun MainScreenUi(
                 color = MaterialTheme.colorScheme.onBackground,
                 modifier = Modifier
                     .padding(4.dp)
+                    .padding(top = 24.dp)
                     .fillMaxWidth(),
             )
         },
@@ -72,7 +72,7 @@ private fun MainScreenUi(
             }
             item {
                 Text(
-                    text = state.dataText ?: "null",
+                    text = "Data is ${state.dataText ?: "null"}",
                     style = MaterialTheme.typography.titleMedium,
                     textAlign = TextAlign.Center,
                     color = MaterialTheme.colorScheme.primary,
