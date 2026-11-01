@@ -1,4 +1,4 @@
-#Sat Oct 31 22:37:57 GMT+07:00 2026
+#Sat Oct 31 23:26:34 GMT+07:00 2026
 base.0=/Users/k.bilyk/Developer/android/kotea-sample/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/Users/k.bilyk/Developer/android/kotea-sample/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
 base.2=/Users/k.bilyk/Developer/android/kotea-sample/app/build/intermediates/dex/debug/mergeProjectDexDebug/15/classes.dex
