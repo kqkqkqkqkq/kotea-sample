@@ -7,3 +7,7 @@
  * @version 1.1.0
  */
 ```
+
+### Preview
+
+![Preview](preview/preview.mp4)
