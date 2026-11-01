@@ -12,8 +12,9 @@ internal class ThrowErrorButtonClickedUiEventHandler : BaseEventHandler<ThrowErr
         return Next(
             state = state.copy(
                 dataText = null,
+                isLoading = true,
             ),
-            commands = listOf(LoadData(true)),
+            commands = listOf(LoadData(true, 500L)),
         )
     }
 }

@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">kotea sample</string>
+
+    <string name="unknown_error">Unknown error</string>
+
     <string name="main_title">Kotea preview</string>
+    <string name="main_data_text">Data is %s</string>
+    <string name="main_error_text">Error is %s</string>
     <string name="main_throw_error">Throw error</string>
-    <string name="main_load_data">Load data</string>
+    <string name="main_reload_data">Reload data</string>
 </resources>

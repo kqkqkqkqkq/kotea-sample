@@ -7,6 +7,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import dev.k.kotea_sample.core.ui.theme.KoteasampleTheme
+import dev.k.kotea_sample.presentation.MainCommand.LoadData
 import dev.k.kotea_sample.presentation.MainNews
 import dev.k.kotea_sample.presentation.MainNews.ShowToast
 import dev.k.kotea_sample.presentation.MainStore
@@ -19,8 +20,8 @@ import dev.k.kotea_sample.presentation.event_handlers.LoadDataButtonClickedUiEve
 import dev.k.kotea_sample.presentation.event_handlers.MainUpdate
 import dev.k.kotea_sample.presentation.event_handlers.ThrowErrorButtonClickedUiEventHandler
 import dev.k.kotea_sample.ui.MainScreen
-import dev.k.kotea_sample.ui.MainUiState
 import dev.k.kotea_sample.ui.MainUiStateMapper
+import dev.k.kotea_sample.ui.state.MainUiState
 import ru.tinkoff.kotea.android.lifecycle.collectOnCreate
 import ru.tinkoff.kotea.android.storeViaViewModel
 
@@ -30,6 +31,9 @@ class MainActivity : ComponentActivity() {
 
     private val store by storeViaViewModel {
         MainStore(
+            initialCommands = listOf(
+                LoadData(false, 1000L),
+            ),
             commandsFlowHandlers = listOf(
                 LoadDataCommandHandler(),
             ),

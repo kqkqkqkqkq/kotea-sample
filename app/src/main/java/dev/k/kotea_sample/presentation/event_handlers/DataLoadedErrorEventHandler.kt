@@ -11,8 +11,9 @@ internal class DataLoadedErrorEventHandler : BaseEventHandler<Error>() {
     override fun update(state: MainState, event: Error): Next<MainState, MainCommand, MainNews> {
         return Next(
             state = state.copy(
-                dataText = event.throwable.localizedMessage,
+                dataText = null,
                 error = event.throwable,
+                isLoading = false,
             ),
             news = listOf(ShowToast(event.throwable.localizedMessage)),
         )

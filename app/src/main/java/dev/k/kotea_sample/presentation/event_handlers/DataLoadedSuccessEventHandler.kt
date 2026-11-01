@@ -12,6 +12,7 @@ internal class DataLoadedSuccessEventHandler : BaseEventHandler<Success>() {
             state = state.copy(
                 dataText = event.dataText,
                 error = null,
+                isLoading = false,
             ),
         )
     }

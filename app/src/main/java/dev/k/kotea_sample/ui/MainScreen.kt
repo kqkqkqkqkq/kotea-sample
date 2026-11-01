@@ -1,40 +1,29 @@
 package dev.k.kotea_sample.ui
 
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults.buttonColors
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.k.kotea_sample.R
 import dev.k.kotea_sample.core.ui.theme.KoteasampleTheme
+import dev.k.kotea_sample.ui.state.MainScreenContent
+import dev.k.kotea_sample.ui.state.MainScreenError
+import dev.k.kotea_sample.ui.state.MainScreenLoading
+import dev.k.kotea_sample.ui.state.MainUiState
+import dev.k.kotea_sample.ui.state.MainUiState.Content
+import dev.k.kotea_sample.ui.state.MainUiState.Error
+import dev.k.kotea_sample.ui.state.MainUiState.Loading
 
 @Composable
 internal fun MainScreen(
-    state: MainUiState,
-    onLoadDataClick: () -> Unit,
-    onThrowErrorClick: () -> Unit,
-) {
-    MainScreenUi(
-        state = state,
-        onLoadDataClick = onLoadDataClick,
-        onThrowErrorClick = onThrowErrorClick,
-    )
-}
-
-@Composable
-private fun MainScreenUi(
     state: MainUiState,
     onLoadDataClick: () -> Unit,
     onThrowErrorClick: () -> Unit,
@@ -53,62 +42,25 @@ private fun MainScreenUi(
         },
         modifier = Modifier.fillMaxSize(),
     ) { innerPadding ->
-        LazyColumn(
+        Box(
             modifier = Modifier
                 .padding(innerPadding)
-                .padding(horizontal = 8.dp)
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
+                .fillMaxSize()
         ) {
-            item {
-                DefaultButton(text = stringResource(R.string.main_load_data)) {
-                    onLoadDataClick()
-                }
-            }
-            item {
-                DefaultButton(text = stringResource(R.string.main_throw_error)) {
-                    onThrowErrorClick()
-                }
-            }
-            item {
-                Text(
-                    text = "Data is ${state.dataText ?: "null"}",
-                    style = MaterialTheme.typography.titleMedium,
-                    textAlign = TextAlign.Center,
-                    color = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.fillMaxWidth(),
-                )
+            when (state) {
+                is Loading -> MainScreenLoading(state)
+                is Content -> MainScreenContent(state, onThrowErrorClick, onLoadDataClick)
+                is Error -> MainScreenError(state, onLoadDataClick)
             }
         }
     }
 }
 
-@Composable
-private fun DefaultButton(text: String, onClick: () -> Unit) {
-    Button(
-        onClick = onClick,
-        modifier = Modifier
-            .padding(12.dp, 0.dp)
-            .fillMaxSize(),
-        shape = RoundedCornerShape(8.dp),
-        colors = buttonColors(
-            containerColor = MaterialTheme.colorScheme.onBackground,
-            contentColor = MaterialTheme.colorScheme.background,
-        ),
-    ) {
-        Text(
-            text = text,
-            style = MaterialTheme.typography.bodyMedium,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth(),
-        )
-    }
-}
 
 @Preview(showBackground = true)
 @Composable
-private fun MainScreenUiPreview() {
+private fun MainScreenPreview() {
     KoteasampleTheme {
-        MainScreenUi(MainUiState(null), {}, {})
+        MainScreen(Content("123"), {}, {})
     }
 }

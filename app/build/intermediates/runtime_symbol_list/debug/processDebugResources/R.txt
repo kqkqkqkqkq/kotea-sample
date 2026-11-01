@@ -333,7 +333,9 @@ int string m3c_tooltip_long_press_label 0x7f0b0050
 int string m3c_tooltip_pane_description 0x7f0b0051
 int string m3c_wide_navigation_rail_close_rail 0x7f0b0052
 int string m3c_wide_navigation_rail_pane_title 0x7f0b0053
-int string main_load_data 0x7f0b0054
+int string main_data_text 0x7f0b0067
+int string main_error_text 0x7f0b006a
+int string main_reload_data 0x7f0b0068
 int string main_throw_error 0x7f0b0055
 int string main_title 0x7f0b0056
 int string mc2_snackbar_pane_title 0x7f0b0057
@@ -352,6 +354,7 @@ int string tab 0x7f0b0063
 int string template_percent 0x7f0b0064
 int string tooltip_description 0x7f0b0065
 int string tooltip_label 0x7f0b0066
+int string unknown_error 0x7f0b0069
 int style DialogWindowTheme 0x7f0c0000
 int style EdgeToEdgeFloatingDialogTheme 0x7f0c0001
 int style EdgeToEdgeFloatingDialogWindowTheme 0x7f0c0002

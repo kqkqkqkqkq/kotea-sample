@@ -12,8 +12,9 @@ internal class LoadDataButtonClickedUiEventHandler : BaseEventHandler<LoadDataBu
         return Next(
             state = state.copy(
                 dataText = null,
+                isLoading = true,
             ),
-            commands = listOf(LoadData(false)),
+            commands = listOf(LoadData(false, 500L)),
         )
     }
 }

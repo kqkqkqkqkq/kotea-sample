@@ -6,11 +6,12 @@ import ru.tinkoff.kotea.core.KoteaStore
 import ru.tinkoff.kotea.core.Store
 
 internal class MainStore(
+    private val initialCommands: List<MainCommand>,
     private val commandsFlowHandlers: List<BaseCommandHandler>,
     private val update: MainUpdate,
 ) : Store<MainState, MainUiEvent, MainNews> by KoteaStore(
     initialState = MainState.INITIAL,
-    initialCommands = emptyList(),
+    initialCommands = initialCommands,
     commandsFlowHandlers = commandsFlowHandlers,
     update = update,
 )

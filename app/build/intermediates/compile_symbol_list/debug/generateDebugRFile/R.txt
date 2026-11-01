@@ -10,9 +10,12 @@ int drawable ic_launcher_foreground 0x0
 int mipmap ic_launcher 0x0
 int mipmap ic_launcher_round 0x0
 int string app_name 0x0
-int string main_load_data 0x0
+int string main_data_text 0x0
+int string main_error_text 0x0
+int string main_reload_data 0x0
 int string main_throw_error 0x0
 int string main_title 0x0
+int string unknown_error 0x0
 int style Theme_Koteasample 0x0
 int xml backup_rules 0x0
 int xml data_extraction_rules 0x0

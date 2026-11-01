@@ -12,9 +12,12 @@ drawable ic_launcher_foreground
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
-string main_load_data
+string main_data_text
+string main_error_text
+string main_reload_data
 string main_throw_error
 string main_title
+string unknown_error
 style Theme.Koteasample
 xml backup_rules
 xml data_extraction_rules
